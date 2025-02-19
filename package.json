@@ -1,5 +1,5 @@
 {
-  "name": "Node.js-Random-Color-Generator-Winter-2025-EU-Nagisa-Riegler",
+  "name": "node.js-random-color-generator-winter-2025-eu-nagisa-riegler",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -16,5 +16,10 @@
     "eslint-config-upleveled": "^9.1.2",
     "prettier": "^3.5.1",
     "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "ansi-styles": "^6.2.1",
+    "chalk": "^5.4.1",
+    "color-convert": "^3.0.1"
   }
 }
