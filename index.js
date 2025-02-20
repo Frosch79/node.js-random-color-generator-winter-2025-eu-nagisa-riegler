@@ -3,6 +3,7 @@ import readline from 'node:readline';
 import styles from 'ansi-styles';
 import chalk from 'chalk';
 import convert from 'color-convert';
+import stripAnsi from 'strip-ansi';
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -38,13 +39,13 @@ function colorGenerator(colorName, mode) {
   return `${colorName} is not exist`;
 }
 
-function printColorGenerator(color) {
+function printColorGenerator(getColor) {
   let printColor = '';
   // Convert to hex code
-  const getAnsiColor = Object.values(styles.color[color].open);
-  const convertColor = convert.ansi16.hex(
-    Number(getAnsiColor[2] + getAnsiColor[3]),
-  );
+  const getAnsiColor = styles.color[getColor].open
+    .replace('\x1B[', '')
+    .replace('m', '');
+  const convertColor = convert.ansi16.hex(Number(getAnsiColor));
 
   // Make a print
   for (let i = 0; i < 9; i++) {
@@ -66,7 +67,7 @@ function printColorGenerator(color) {
     }
     printColor += '\n';
   }
-  return chalk[color](printColor);
+  return chalk[getColor](printColor);
 }
 
 // If 'ask' receives
