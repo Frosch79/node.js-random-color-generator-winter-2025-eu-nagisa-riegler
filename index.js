@@ -22,6 +22,7 @@ function colorGenerator(colorName, mode) {
   } else if (mode) {
     if (mode === 'light') {
       colorName += 'Bright';
+    } else if (mode === 'dark') {
     } else {
       // If it  receive a light mode
       return `${mode} is exist`;
