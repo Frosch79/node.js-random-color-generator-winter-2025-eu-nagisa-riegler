@@ -90,4 +90,5 @@ if (argv[2] === 'ask') {
   });
 } else {
   console.log(colorGenerator(argv[2], argv[3]));
+  rl.close();
 }
