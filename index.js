@@ -3,7 +3,6 @@ import readline from 'node:readline';
 import styles from 'ansi-styles';
 import chalk from 'chalk';
 import convert from 'color-convert';
-import stripAnsi from 'strip-ansi';
 
 const rl = readline.createInterface({
   input: process.stdin,
