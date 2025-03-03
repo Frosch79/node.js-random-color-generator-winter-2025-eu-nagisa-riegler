@@ -4,28 +4,22 @@ import styles from 'ansi-styles';
 import chalk from 'chalk';
 import convert from 'color-convert';
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-function colorGenerator(colorName, mode) {
+function colorGenerator(colorName, luminosity) {
   const colorObject = Object.keys(styles.color);
 
   if (argv.length < 3) {
     // Random color
-    const randomColor = Math.floor(
-      Math.random() * (colorObject.length - 1) + 1,
-    );
+    const randomColor =
+      colorObject[Math.floor(Math.random() * colorObject.length)];
 
-    return printColorGenerator(colorObject[randomColor - 1]);
-  } else if (mode) {
-    if (mode === 'light') {
+    return printColorGenerator(randomColor);
+  } else if (luminosity) {
+    if (luminosity === 'light') {
       colorName += 'Bright';
-    } else if (mode === 'dark') {
+    } else if (luminosity === 'dark') {
     } else {
       // If it  receive a light mode
-      return `${mode} is exist`;
+      return `${luminosity} is exists`;
     }
   }
   for (const key of colorObject) {
@@ -36,7 +30,7 @@ function colorGenerator(colorName, mode) {
   }
 
   // Error message
-  return `${colorName} is not exist`;
+  return `${colorName} is not exists`;
 }
 
 function printColorGenerator(getColor) {
@@ -74,6 +68,11 @@ if (argv[2] === 'ask') {
   let color = '';
   let mode = '';
 
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
   rl.question('What color do you like?: ', (askColor) => {
     color = askColor;
 
@@ -90,5 +89,4 @@ if (argv[2] === 'ask') {
   });
 } else {
   console.log(colorGenerator(argv[2], argv[3]));
-  rl.close();
 }
