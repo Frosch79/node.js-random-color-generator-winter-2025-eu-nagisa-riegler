@@ -16,11 +16,12 @@ function colorGenerator(colorName, luminosity) {
   } else if (luminosity) {
     if (luminosity === 'light') {
       colorName += 'Bright';
-    } else {
+    } else if (luminosity !== 'dark') {
       // If it  receive a light mode
       return `${luminosity} is exists`;
     }
   }
+
   for (const key of colorObject) {
     if (key === colorName) {
       // Color from argument
