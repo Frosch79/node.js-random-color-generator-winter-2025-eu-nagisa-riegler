@@ -37,7 +37,8 @@ function printColorGenerator(getColor) {
   let printColor = '';
   // Convert to hex code
   const getAnsiColor = styles.color[getColor].open;
-  const ansiToNum = getAnsiColor.replace('\x1B[', '').replace('m', '');
+  let ansiToNum = getAnsiColor.replace('\x1B[', '');
+  ansiToNum = ansiToNum.replace('m', '');
   const convertColor = convert.ansi16.hex(Number(ansiToNum));
 
   // Make a print
