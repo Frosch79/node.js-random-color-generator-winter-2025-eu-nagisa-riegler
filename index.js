@@ -10,7 +10,7 @@ function colorGenerator(colorName, luminosity) {
   if (argv.length < 3) {
     // Random color
     const randomColor =
-      colorObject[Math.floor(Math.random() * colorObject.length)];
+      colorObject[Math.floor(Math.random() * (colorObject.length - 4))];
 
     return printColorGenerator(randomColor);
   } else if (luminosity) {
@@ -37,7 +37,7 @@ function printColorGenerator(getColor) {
   let printColor = '';
   // Convert to hex code
   const getAnsiColor = styles.color[getColor].open;
-  const ansiToNum = getAnsiColor.replace('\\x1B[', '').replace('m', '');
+  const ansiToNum = getAnsiColor.replace('\x1B[', '').replace('m', '');
   const convertColor = convert.ansi16.hex(Number(ansiToNum));
 
   // Make a print
