@@ -49,7 +49,7 @@ function printColorGenerator(getColor) {
           printColor += '#';
         }
       } else if (i === 4 && j > 4 && j < 26) {
-        if (j === 5) {
+        if (j > 5) {
           continue;
         }
         printColor += `      #${convertColor}        `;
